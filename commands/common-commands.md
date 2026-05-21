@@ -21,6 +21,13 @@ Cisco devices use different command modes. Each mode gives access to different c
 | `conf t` | Privileged EXEC Mode | Short version of `configure terminal` |
 | `clock set HH:MM:SS MONTH DAY YEAR` | Privileged EXEC Mode | Manually sets the device date and time |
 | `show clock` | Privileged EXEC Mode | Displays the current date and time on the device |
+| `exit` | Any configuration mode | Moves back one command mode level |
+| `end` | Configuration mode | Returns directly to Privileged EXEC Mode |
+| `enable secret PASSWORD` | Global Configuration Mode | Sets an encrypted password for Privileged EXEC Mode |
+| `interface INTERFACE_ID` | Global Configuration Mode | Enters configuration mode for a specific interface |
+| `description TEXT` | Interface Configuration Mode | Adds a description to an interface |
+| `no shutdown` | Interface Configuration Mode | Enables an interface |
+| `shutdown` | Interface Configuration Mode | Disables an interface |
 
 ## Command Examples
 
@@ -77,6 +84,77 @@ show clock
 
 The `show clock` command displays the current date and time configured on the device.
 
+### Move Back One Mode
+
+```bash
+exit
+```
+
+Example:
+
+```bash
+Switch(config-if)# exit
+Switch(config)#
+```
+
+### Return to Privileged EXEC Mode
+
+```bash
+end
+```
+
+Example:
+
+```bash
+Switch(config-if)# end
+Switch#
+```
+
+### Set an Enable Secret
+
+```bash
+enable secret class
+```
+
+This sets an encrypted password for Privileged EXEC Mode.
+
+### Enter Interface Configuration Mode
+
+```bash
+interface gigabitEthernet 0/1
+```
+
+Example prompt change:
+
+```bash
+Switch(config)#
+Switch(config-if)#
+```
+
+### Add an Interface Description
+
+```bash
+description Connection to PC1
+```
+
+This adds a label to the interface so it is easier to understand what the port connects to.
+
+### Enable an Interface
+
+```bash
+no shutdown
+```
+
+This turns the interface on.
+
+### Disable an Interface
+
+```bash
+shutdown
+```
+
+This turns the interface off.
+
 ## What I Learned
 
 The `enable` command is used to access Privileged EXEC Mode. This gives more control over the device than basic User EXEC Mode.
@@ -94,3 +172,10 @@ The `show clock` is used to verify the current date and time.
 - `enable` does not configure the device by itself. It only changes the command mode.
 - `configure terminal` is used after entering Privileged EXEC Mode.
 - `conf t` is the shortened version of `configure terminal`.
+- `exit` moves back one level in the command mode hierarchy.
+- `end` returns directly to Privileged EXEC Mode.
+- `enable secret` is preferred over plain-text password commands because it stores the password in encrypted form.
+- `interface` is used to select the port or interface being configured.
+- `description` is helpful for documenting what an interface connects to.
+- `no shutdown` enables an interface.
+- `shutdown` disables an interface.
