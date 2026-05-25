@@ -1,0 +1,52 @@
+!
+! Device: DS-07-SW2
+! Lab: Skill Lab 01, District Shop Bring-Up
+! Purpose: Access switch management, WAP, and server drop configuration
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname DS-07-SW2
+!
+enable secret 5 $1$mERr$YJ4ZJlM8rCj/H2nmFyE9q1
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+ description Connection to DS-07-SW1
+!
+interface FastEthernet0/2
+ description Connection to DS-07-SW1
+!
+interface FastEthernet0/3
+ description Connection to Server
+!
+interface FastEthernet0/4
+ description Connection to WAP2
+!
+interface Vlan1
+ ip address 192.168.10.12 255.255.255.0
+ no shutdown
+!
+ip default-gateway 192.168.10.1
+!
+banner motd ^CCastle Rysen Ops: Authorized engineers only.^C
+!
+line con 0
+ password 7 08174D5B050D2414110E1F17
+ login
+!
+line vty 0 4
+ password 7 0812444B050D000533080F013938
+ login
+ transport input ssh
+!
+line vty 5 15
+ password 7 0812444B050D000533080F013938
+ login
+ transport input ssh
+!
+end
