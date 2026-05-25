@@ -201,21 +201,8 @@ Add the Packet Tracer file for this lab in this folder.
 Example:
 
 ```markdown
-[Download the Packet Tracer lab](file-name-here.pkt)
+[Download the Packet Tracer lab](Skill-5-Skill Lab 01 — District Shop Bring-Up.pkt)
 ```
-
-Replace `file-name-here.pkt` with the actual file name after uploading it.
-
-## Screenshots
-
-Add screenshots showing:
-
-- Network topology
-- Successful management IP configuration
-- `show ip interface brief`
-- `show running-config` showing encrypted enable secret
-- `show startup-config`
-- Successful reload verification
 
 ## What I Learned
 
