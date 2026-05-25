@@ -1,0 +1,39 @@
+!
+! Device: DS-07-RTR1
+! Lab: Skill Lab 01, District Shop Bring-Up
+! Purpose: Router inside interface and access security configuration
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+service password-encryption
+!
+hostname DS-07-RTR1
+!
+enable secret 5 $1$mERr$YJ4ZJlM8rCj/H2nmFyE9q1
+!
+interface GigabitEthernet0/0
+ description Connection to DS-07-SW1
+ ip address 192.168.10.1 255.255.255.0
+ no shutdown
+!
+interface GigabitEthernet0/1
+ description Connection to Internet
+!
+banner motd ^CCastle Rysen Ops: Authorized engineers only.^C
+!
+line con 0
+ password 7 08174D5B050D2414110E1F17
+ login
+!
+line vty 0 4
+ password 7 0812444B050D000533080F013938
+ login
+ transport input ssh
+!
+line vty 5 15
+ password 7 0812444B050D000533080F013938
+ login
+ transport input ssh
+!
+end
