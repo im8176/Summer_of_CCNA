@@ -196,13 +196,7 @@ reload
 
 ## Packet Tracer File
 
-Add the Packet Tracer file for this lab in this folder.
-
-Example:
-
-```markdown
-[Download the Packet Tracer lab](Skill-5-Skill Lab 01 — District Shop Bring-Up.pkt)
-```
+[Download the Packet Tracer lab](district-shop-bring-up.pkt)
 
 ## What I Learned
 
